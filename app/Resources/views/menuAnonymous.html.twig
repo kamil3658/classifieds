@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="headerr" style="padding-bottom: 3%;">
+        <div class="page-header">
+            <h1>Tablica Ogłoszeń <small>wystaw co chcesz</small></h1>
+        </div>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="{{ path("homepage") }}">Strona główna</a></li>
+            <li role="presentation"><a href="{{ path("sell") }}">Sprzedam</a></li>
+            <li role="presentation"><a href="{{ path("buy") }}">Kupię</a></li>
+            <li role="presentation"><a href="{{ path("change") }}">Zamienię</a></li>
+            <div class="pull-right">
+                {% if app.user %}
+                    Zalogowany jako <b>{{ app.user }}</b> | <a href="{{ path("fos_user_security_logout") }}"> Wyloguj się</a>
+                {% else %}
+                    <a href="{{ path("fos_user_security_login") }}"> Zaloguj się</a> | <a href="{{ path("fos_user_registration_register") }}"> Zarejestruj się</a>
+                {% endif %}
+            </div>
+        </ul>
+    </div>
+</div>

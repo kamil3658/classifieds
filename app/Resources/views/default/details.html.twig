@@ -1,0 +1,31 @@
+{%extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="panel {{ classifieldsStyle(classifields.expiresAt) }}">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ classifields.title }}
+            </h3>
+        </div>
+        <div class="panel-body">
+            {{ classifields.description }}
+        </div>
+        <div class="panel-body">
+            Cena jaka mnie interesuje: {{ classifields.price }} zł
+        </div>
+        <div class="panel-body">
+            {% if app.user %}
+                Kontakt do mnie: {{ classifields.contact }}
+            {% else %}
+                Kontakt do sprzedającego widoczny tylko dla zalogowanych
+            {% endif %}
+        </div>
+        <div class="panel-body" style="text-align: center">
+            {% if classifields.image %}
+                <a href="{{ asset('uploads/images/' ~ classifields.image) }}""><img src="{{ asset('uploads/images/' ~ classifields.image) }}" /></a>
+            {% endif %}
+        </div>
+    </div>
+
+    <a class="btn btn-default pull-left" href="{{ url("homepage") }}">Powrót</a>
+    <div class="clearfix"></div>
+{% endblock %}

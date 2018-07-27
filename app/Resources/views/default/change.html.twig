@@ -1,0 +1,31 @@
+{%extends 'base.html.twig' %}
+
+{% block body %}
+    {% for classifield in classifields %}
+        <div class="panel {{ classifieldsStyle(classifield.expiresAt) }}">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{{ url("details", {"id": classifield.id}) }}"> {{ classifield.title }} </a></h3>
+            </div>
+            <div class="panel-body">
+                <div class="pull-right" style="padding-bottom:  1%;">
+                    {{ classifieldsExpire(classifield.expiresAt) }} {{ classifield.expiresAt | expireDate}}
+                </div>
+                {% if classifield.image %}
+                <div class="panel-body">
+                    <a href="{{ url("details", {"id": classifield.id}) }}""><img src="{{ asset('uploads/images/' ~ classifield.image) }}" width="200" height="100"/></a>
+                </div>
+                {% endif %}
+                {{ classifield.description }}
+            </div>
+            <div class="panel-body">
+                Cena jaka mnie interesuje: {{ classifield.price }} zł
+            </div>
+        </div>
+    {% else %}
+        <div class="panel panel-warning">
+            <div class="panel-body">
+                <h4>Niestety nie ma w tej chwili żadnego ogłoszenia w dziale "Zamienię"</h4>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

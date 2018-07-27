@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Tablica ogłoszeń{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <div class="container">
+        {% if is_granted("ROLE_USER") %}
+            {% include("menuAuthenticated.html.twig") %}
+        {% else %}
+            {% include("menuAnonymous.html.twig") %}
+        {% endif %}
+
+        {% block body %}{% endblock %}
+        <div class="modal-footer" style="text-align: center; margin-top: 3%;">
+            Wszelkie prawa zastrzeżone. 2018
+        </div>
+    </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>Witaj
+        {{ user.username }} </p>
+    {% if targetUrl %}
+    {% endif %}
+{% endblock fos_user_content %}

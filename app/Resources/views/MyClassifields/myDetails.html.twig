@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{ classifields.title }}</h4>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">Status:  <h4>{{ classifields.status }}</h4></li>
+            <li class="list-group-item">Opis Twojego ogłoszenia: <h4>{{ classifields.description }}</h4></li>
+            <li class="list-group-item">Cena Twojego ogłoszenia: <h4>{{ classifields.price }} zł</h4></li>
+            <li class="list-group-item">Data wygaśnięcia ogłoszenia: <h4>{{ classifields.expiresAt | date("Y-m-d H:i:s")}}</h4></li>
+            <li class="list-group-item">Kategoria, w któres wystawiłeś ogłoszenie: <h4>{{ classifields.indicator }}</h4></li>
+            {% if classifields.image %}
+                <li class="list-group-item"><img src="{{ asset('uploads/images/' ~ classifields.image) }}"/></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <a class="btn btn-default pull-left" href="{{ url("myClassifieldsActive") }}">Powrót</a>
+    <a class="btn btn-info pull-left" href="{{ url("myClassifieldsEdit", {"id": classifields.id}) }}">Edytuj</a>
+
+    {{ form_start(finishForm, {"attr": {"class": "pull-left"}}) }}
+    {{ form_widget(finishForm.submit, {"attr": {"class": "btn-warning"}}) }}
+    {{ form_rest(finishForm) }}
+    {{ form_end(finishForm) }}
+
+    {{ form_start(deleteForm, {"attr": {"class": "pull-left"}}) }}
+    {{ form_widget(deleteForm.submit, {"attr": {"class": "btn-danger"}}) }}
+    {{ form_rest(deleteForm) }}
+    {{ form_end(deleteForm) }}
+
+
+    <div class="clearfix"></div>
+{% endblock %}

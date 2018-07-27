@@ -1,0 +1,29 @@
+{%extends 'base.html.twig' %}
+
+{% block body %}
+    <ul class="nav nav-pills nav-justified" style="width: 50%; padding-left: 40%; padding-right: 40%; padding-bottom: 3%;">
+        <li role="presentation" class="active"><a href="{{ path("myClassifieldsActive") }}">Aktywne ogłoszenia</a></li>
+        <li role="presentation"><a href="{{ path("myClassifieldsFinished") }}">Zakończone ogłoszenia</a></li>
+    </ul>
+    {% for classifield in classifields %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{{ url("myClassifieldsDetails", {"id": classifield.id}) }}"> <h4>{{ classifield.title }}</h4> </a></h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">Data wygaśnięcia ogłoszenia: <h4>{{ classifield.expiresAt | date("Y-m-d H:i:s")}}</h4></li>
+                <li class="list-group-item">Kategoria: <h4>{{ classifield.indicator }}</h4></li>
+                {% if classifield.image %}
+                        <li class="list-group-item"><a href="
+                            {{ url("myClassifieldsDetails", {"id": classifield.id}) }}"">
+                            <img src="{{ asset('uploads/images/' ~ classifield.image) }}" width="200" height="100"/></a></li>
+                {% endif %}
+        </div>
+    {% else %}
+        <div class="panel panel-warning">
+            <div class="panel-body">
+                <h4>Niestety nie masz w tej chwili wystawionych żadnych swoich ogłoszeń</h4>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
