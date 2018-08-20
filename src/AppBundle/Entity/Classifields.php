@@ -35,15 +35,6 @@ class Classifields
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Assert\NotBlank(
-     *     message="Tytuł nie może być pusty."
-     * )
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="Tytuł nie może być krótszy niż 3 znaki",
-     *     maxMessage="Tytuł nie może być dłuższy niż 255 znaków"
-     * )
      */
     private $title;
 
@@ -51,20 +42,11 @@ class Classifields
      * @var string
      *
      * @ORM\Column(name="description", type="text")
-     * @Assert\NotBlank(
-     *     message="Opis nie może być pusty."
-     * )
-     * @Assert\Length(
-     *     min=10,
-     *     minMessage="Opis nie może być krótszy niż 10 znaków"
-     * )
      */
     private $description;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="E-mail nie może być pusty.")
-     * @Assert\Email(message="Wartośc nie jest adresem e-mail")
      * @ORM\Column(name="contact", type="string", length=255)
      */
     private $contact;
@@ -102,13 +84,6 @@ class Classifields
     /**
      * @var float
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
-     * @Assert\NotBlank(
-     *     message="Cena nie może być pusta."
-     * )
-     * @Assert\GreaterThan(
-     *     value="0",
-     *     message="Cena musi być większa od 0"
-     * )
      */
     private $price;
 
@@ -122,16 +97,6 @@ class Classifields
     /**
      * @var string
      *
-     * @Assert\Image(mimeTypes = {"image/png", "image/jpg", "image/jpeg"},
-     *     mimeTypesMessage = "Tylko rozszerzenie png, jpg. jpeg",
-     *     minWidth="150",
-     *     minWidthMessage="Minimalny dopuszczalny rozmiar szerokości zdjęcia to 150px.",
-     *     maxWidth="1000",
-     *     maxWidthMessage="Maksymalny dopuszczalny rozmiar szerokości zdjęcia to 1000px.",
-     *     minHeight="150",
-     *     minHeightMessage="Minimalny dopuszczalny rozmiar wysokości zdjęcia to 150px.",
-     *     maxHeight="1000",
-     *     maxHeightMessage="Maksymalny dopuszczalny rozmiar wysokości zdjęcia to 1000px.")
      * @ORM\Column(name="image",type="string", nullable=true)
      */
     private $image;

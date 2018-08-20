@@ -108,7 +108,7 @@ class MyClassifieldsController extends Controller
 
             $classifields->setStatus(Classifields::STATUS_ACTIVE);
             /*$classifields->setImage(
-                new File($this->getParameter("image_directory")."/".$classifields->getImage())
+                new File($this->getParameter("image_directory") . '/' . $classifields->getImage())
             );*/
 
             $entityManager = $this->getDoctrine()->getManager();
